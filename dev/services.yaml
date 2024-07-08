@@ -1,0 +1,223 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"app","namespace":"default"},"spec":{"ports":[{"name":"http","port":8080,"targetPort":8080},{"name":"rsocket","port":6565,"targetPort":6565}],"selector":{"app":"app"},"type":"NodePort"}}
+    creationTimestamp: "2023-08-08T06:42:01Z"
+    name: app
+    namespace: default
+    resourceVersion: "1341737"
+    uid: b7134bac-47db-480a-9a60-1e1c29576fb0
+  spec:
+    clusterIP: 10.100.219.224
+    clusterIPs:
+    - 10.100.219.224
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: http
+      nodePort: 30787
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    - name: rsocket
+      nodePort: 32178
+      port: 6565
+      protocol: TCP
+      targetPort: 6565
+    selector:
+      app: app
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: ext-dns
+      meta.helm.sh/release-namespace: default
+    creationTimestamp: "2023-08-06T16:27:48Z"
+    labels:
+      app.kubernetes.io/instance: ext-dns
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: external-dns
+      helm.sh/chart: external-dns-6.22.0
+    name: ext-dns-external-dns
+    namespace: default
+    resourceVersion: "877169"
+    uid: 74c35ff2-95b8-4650-9c02-f876418ddcfd
+  spec:
+    clusterIP: 10.100.22.55
+    clusterIPs:
+    - 10.100.22.55
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: http
+      port: 7979
+      protocol: TCP
+      targetPort: http
+    selector:
+      app.kubernetes.io/instance: ext-dns
+      app.kubernetes.io/name: external-dns
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2023-08-03T16:15:25Z"
+    labels:
+      component: apiserver
+      provider: kubernetes
+    name: kubernetes
+    namespace: default
+    resourceVersion: "191"
+    uid: bbd8ca4c-5d99-4384-a1dd-8bc022fb677e
+  spec:
+    clusterIP: 10.100.0.1
+    clusterIPs:
+    - 10.100.0.1
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 443
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: aws-load-balancer-controller
+      meta.helm.sh/release-namespace: kube-system
+    creationTimestamp: "2023-08-08T06:28:54Z"
+    labels:
+      app.kubernetes.io/component: webhook
+      app.kubernetes.io/instance: aws-load-balancer-controller
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: aws-load-balancer-controller
+      app.kubernetes.io/version: v2.5.2
+      helm.sh/chart: aws-load-balancer-controller-1.5.3
+      prometheus.io/service-monitor: "false"
+    name: aws-load-balancer-webhook-service
+    namespace: kube-system
+    resourceVersion: "1338951"
+    uid: 628e1cc8-c725-4bc1-b84d-407d4c6eec69
+  spec:
+    clusterIP: 10.100.131.240
+    clusterIPs:
+    - 10.100.131.240
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: webhook-server
+      port: 443
+      protocol: TCP
+      targetPort: webhook-server
+    selector:
+      app.kubernetes.io/instance: aws-load-balancer-controller
+      app.kubernetes.io/name: aws-load-balancer-controller
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: karpenter
+      meta.helm.sh/release-namespace: kube-system
+    creationTimestamp: "2024-07-03T07:35:52Z"
+    labels:
+      app.kubernetes.io/instance: karpenter
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: karpenter
+      app.kubernetes.io/version: 0.37.0
+      helm.sh/chart: karpenter-0.37.0
+    name: karpenter
+    namespace: kube-system
+    resourceVersion: "99588638"
+    uid: 89d08010-0ec6-46e9-8eb4-4cbecf8cdc3b
+  spec:
+    clusterIP: 10.100.95.59
+    clusterIPs:
+    - 10.100.95.59
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: http-metrics
+      port: 8000
+      protocol: TCP
+      targetPort: http-metrics
+    selector:
+      app.kubernetes.io/instance: karpenter
+      app.kubernetes.io/name: karpenter
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"prometheus.io/port":"9153","prometheus.io/scrape":"true"},"labels":{"eks.amazonaws.com/component":"kube-dns","k8s-app":"kube-dns","kubernetes.io/cluster-service":"true","kubernetes.io/name":"CoreDNS"},"name":"kube-dns","namespace":"kube-system"},"spec":{"clusterIP":"10.100.0.10","ports":[{"name":"dns","port":53,"protocol":"UDP"},{"name":"dns-tcp","port":53,"protocol":"TCP"}],"selector":{"k8s-app":"kube-dns"}}}
+      prometheus.io/port: "9153"
+      prometheus.io/scrape: "true"
+    creationTimestamp: "2023-08-03T16:15:33Z"
+    labels:
+      eks.amazonaws.com/component: kube-dns
+      k8s-app: kube-dns
+      kubernetes.io/cluster-service: "true"
+      kubernetes.io/name: CoreDNS
+    name: kube-dns
+    namespace: kube-system
+    resourceVersion: "274"
+    uid: 50ee8ebd-f4f8-439b-8f4f-a536d9fc06c4
+  spec:
+    clusterIP: 10.100.0.10
+    clusterIPs:
+    - 10.100.0.10
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: dns
+      port: 53
+      protocol: UDP
+      targetPort: 53
+    - name: dns-tcp
+      port: 53
+      protocol: TCP
+      targetPort: 53
+    selector:
+      k8s-app: kube-dns
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""
