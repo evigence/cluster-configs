@@ -23,11 +23,11 @@ spec:
           image: 480997871449.dkr.ecr.us-east-1.amazonaws.com/app:latest
           env:
             - name: SPRING_PROFILES_ACTIVE
-              value: "prod"
+              value: "dev"
             - name: CORALOGIX_LOG_URL
               value: "https://api.coralogix.us/api/v1/logs"
             - name: newrelic.environment
-              value: "production"
+              value: "dev"
           resources:
             requests:
               memory: "718Mi"
