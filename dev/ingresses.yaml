@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: app-service
   annotations:
+    kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
@@ -18,7 +19,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: dev-app.evigence.co
+    - host: evg-dev-app.evigence.co
       http:
         paths:
           - path: /rsocket
