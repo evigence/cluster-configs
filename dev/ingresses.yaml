@@ -11,7 +11,7 @@ metadata:
     alb.ingress.kubernetes.io/target-group-attributes: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=60
     alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=600
     alb.ingress.kubernetes.io/inbound-cidrs: 172.27.0.0/16
-    alb.ingress.kubernetes.io/subnets: subnet-09c7e43c9141f8c3d,subnet-08afd225640283a05
+    alb.ingress.kubernetes.io/subnets: subnet-0c1b171dd84ebbbbb,subnet-0fe9a547463e515b3
     alb.ingress.kubernetes.io/security-groups: sg-063a824b76a0e61ea
     alb.ingress.kubernetes.io/healthcheck-port: '8080'
     alb.ingress.kubernetes.io/healthcheck-path: /actuator/health
