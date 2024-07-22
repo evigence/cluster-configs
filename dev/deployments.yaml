@@ -36,11 +36,9 @@ spec:
               memory: "718Mi"
               cpu: "700m"
           readinessProbe:
-            tcpSocket:
-              port: 8080
-            # httpGet:
-            #  path: /actuator/health
-            #  port: 8080
+            httpGet:
+             path: /actuator/health
+             port: 8080
             initialDelaySeconds: 30
             periodSeconds: 10
             timeoutSeconds: 5
