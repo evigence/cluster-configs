@@ -10,7 +10,7 @@ metadata:
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:649257189115:certificate/2c8867a2-71cd-4651-832f-40266f86f470
     alb.ingress.kubernetes.io/target-group-attributes: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=60
     alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=600
-    alb.ingress.kubernetes.io/inbound-cidrs: 172.27.0.0/16
+    alb.ingress.kubernetes.io/inbound-cidrs: 0.0.0.0/16
     alb.ingress.kubernetes.io/subnets: subnet-0c1b171dd84ebbbbb,subnet-0fe9a547463e515b3
     alb.ingress.kubernetes.io/security-groups: sg-0be11050755537437
     alb.ingress.kubernetes.io/healthcheck-port: '8080'
