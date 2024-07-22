@@ -20,7 +20,7 @@ spec:
               app: app
       containers:
         - name: app
-          image: 480997871449.dkr.ecr.us-east-1.amazonaws.com/app:ac8438363efaa25e29df65c1f06547e88d77d337
+          image: 480997871449.dkr.ecr.us-east-1.amazonaws.com/app:9246a8a8e05b6d126e0ca734946904dbb25c5259
           env:
             - name: SPRING_PROFILES_ACTIVE 
               value: "dev-new"
